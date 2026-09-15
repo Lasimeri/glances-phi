@@ -44,12 +44,10 @@ psutil on the card: `cpu_count 228`, per-CPU percentages for all 228,
 5683 MB, 1483 pids. The curses interface, started on the console tty with
 a window size set (`stty rows 50 cols 160`), ran until the test timeout
 and stopped gracefully; its log shows every plugin initialised and the IP
-plugin reporting `10.9.0.2/24`; the console log carries its header:
-
-```
- 0.00 0.00 0.00 Swp[0K/0K] Uptime: 
-```
-
+plugin reporting `10.9.0.2/24`. Its screen was not recovered as text from
+the console log (the curses drawing is positioned cell by cell); Python's
+curses itself was verified on the same tty with a test string that did
+appear in the log.
 Interactive use is over SSH (`ssh root@10.9.0.2 -t /opt/phi/bin/glances`)
 once the network bridge is up. The web server mode is not built (FastAPI
 and pydantic-core would be needed).
